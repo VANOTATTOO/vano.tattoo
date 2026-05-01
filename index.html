@@ -12,93 +12,91 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
+  max-width:100%;
 }
 
+html, body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
 
 body{
   font-family:'Montserrat',sans-serif;
   color:#fff;
-  overflow-x:hidden;
 
   background:
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
     url('assets/bg/bg.png');
 
   background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
-}
-/* NOISE (дорогой эффект) */
-body::after{
-  content:"";
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:url('assets/bg/noise.png');
-  opacity:0.04;
-  pointer-events:none;
+  background-position:center top;
+  background-repeat:no-repeat;
+
+  min-height:100vh;
 }
 
 /* CONTAINER */
 .container{
+  width:100%;
   max-width:420px;
-  margin:auto;
-  padding:20px;
+  margin:0 auto;
+  padding:20px 16px;
 }
 
 /* HERO */
 .hero{
-  padding:100px 10px 60px;
+  padding:90px 10px 50px;
 }
 
 .hero h1{
-  font-size:52px;
+  font-size:44px;
   font-weight:800;
   line-height:0.9;
-  letter-spacing:2px;
 }
 
-/* GLASS BLOCK */
+/* GLASS */
 .glass{
   background:rgba(255,255,255,0.04);
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(18px);
   border:1px solid rgba(255,255,255,0.08);
-  border-radius:22px;
-  padding:20px;
-  margin-top:20px;
+  border-radius:20px;
+  padding:18px;
+  margin-top:18px;
 }
 
 /* TITLE */
 .title{
-  font-size:18px;
-  margin-bottom:15px;
+  font-size:16px;
+  margin-bottom:12px;
   opacity:0.8;
 }
 
 /* CAROUSEL */
 .carousel{
   width:100%;
-  height:300px;
-  perspective:1200px;
+  height:260px;
+  perspective:1000px;
   display:flex;
   justify-content:center;
   align-items:center;
+  overflow:hidden;
 }
 
 .carousel-track{
-  width:220px;
-  height:220px;
+  width:180px;
+  height:200px;
   position:relative;
   transform-style:preserve-3d;
-  animation:rotate 30s linear infinite;
+  animation:rotate 28s linear infinite;
 }
 
 .carousel-track img{
   position:absolute;
-  width:180px;
-  height:220px;
+  width:140px;
+  height:180px;
   object-fit:cover;
-  border-radius:16px;
+  border-radius:14px;
   left:20px;
   top:0;
 
@@ -108,7 +106,7 @@ body::after{
 
 .carousel-track img:hover{
   filter:grayscale(0%) brightness(1);
-  transform:scale(1.08);
+  transform:scale(1.05);
 }
 
 @keyframes rotate{
@@ -120,17 +118,18 @@ body::after{
 .row{
   display:flex;
   justify-content:space-between;
-  padding:10px 0;
+  padding:8px 0;
   border-bottom:1px solid rgba(255,255,255,0.05);
+  font-size:14px;
 }
 
 /* BUTTON */
 .btn{
   display:block;
-  margin-top:12px;
-  padding:14px;
+  margin-top:10px;
+  padding:12px;
   text-align:center;
-  border-radius:14px;
+  border-radius:12px;
 
   background:rgba(255,255,255,0.1);
   border:1px solid rgba(255,255,255,0.2);
@@ -147,11 +146,9 @@ body::after{
   color:#000;
 }
 
-/* MOBILE FIX */
-@media(max-width:420px){
-  .hero h1{
-    font-size:44px;
-  }
+img{
+  display:block;
+  max-width:100%;
 }
 </style>
 </head>
@@ -190,7 +187,6 @@ body::after{
 
   <div class="row"><span>Мини тату</span><span>3000₽</span></div>
   <div class="row"><span>Сеанс</span><span>6000₽</span></div>
-
 </div>
 
 <!-- CONTACT -->
@@ -199,7 +195,6 @@ body::after{
 
   <a href="https://t.me/yourname" class="btn">Telegram</a>
   <a href="https://instagram.com/yourname" class="btn">Instagram</a>
-
 </div>
 
 </div>
@@ -210,7 +205,7 @@ const count = images.length;
 const angle = 360 / count;
 
 images.forEach((img, i) => {
-  img.style.transform = `rotateY(${i * angle}deg) translateZ(320px)`;
+  img.style.transform = `rotateY(${i * angle}deg) translateZ(220px)`;
 });
 </script>
 
