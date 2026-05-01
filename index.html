@@ -4,25 +4,166 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VANOTATTOO</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#050505;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* CONTAINER */
+.container{
+  max-width:420px;
+  margin:auto;
+  padding:20px;
+}
+
+/* HERO */
+.hero{
+  padding:80px 10px;
+}
+.hero h1{
+  font-size:48px;
+  font-weight:800;
+}
+
+/* GLASS */
+.glass{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  border-radius:20px;
+  padding:20px;
+  margin-top:20px;
+}
+
+/* TITLE */
+.title{
+  font-size:20px;
+  margin-bottom:20px;
+}
+
+/* CAROUSEL */
+.carousel{
+  width:100%;
+  height:280px;
+  perspective:1000px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.carousel-track{
+  width:200px;
+  height:200px;
+  position:relative;
+  transform-style:preserve-3d;
+  animation:rotate 25s linear infinite;
+}
+
+.carousel-track img{
+  position:absolute;
+  width:160px;
+  height:200px;
+  object-fit:cover;
+  border-radius:14px;
+  left:20px;
+  top:0;
+  transition:0.4s;
+  filter:grayscale(100%);
+}
+
+.carousel-track img:hover{
+  filter:grayscale(0%);
+  transform:scale(1.05);
+}
+
+@keyframes rotate{
+  from{ transform:rotateY(0deg);}
+  to{ transform:rotateY(360deg);}
+}
+
+/* PRICE */
+.row{
+  display:flex;
+  justify-content:space-between;
+  margin:10px 0;
+}
+
+/* BUTTON */
+.btn{
+  display:block;
+  margin-top:15px;
+  padding:14px;
+  text-align:center;
+  border-radius:14px;
+  background:#fff;
+  color:#000;
+  text-decoration:none;
+  font-weight:600;
+}
+
+</style>
 </head>
+
 <body>
 
 <div class="container">
-<h1>VANO<br>TATTOO</h1>
 
-<div class="grid">
-<img src="assets/works/work-1.jpg">
-<img src="assets/works/work-2.jpg">
-<img src="assets/works/work-3.jpg">
-<img src="assets/works/work-4.jpg">
+<!-- HERO -->
+<div class="hero">
+  <h1>VANO<br>TATTOO</h1>
 </div>
 
-<a href="https://t.me/vanotattoo" class="btn">Telegram</a>
-<a href="https://instagram.com/vano.tattoo" class="btn">Instagram</a>
+<!-- CAROUSEL -->
+<div class="glass">
+  <div class="title">МОИ РАБОТЫ</div>
+
+  <div class="carousel">
+    <div class="carousel-track" id="carousel">
+
+      <img src="assets/works/work-1.jpg">
+      <img src="assets/works/work-2.jpg">
+      <img src="assets/works/work-3.jpg">
+      <img src="assets/works/work-4.jpg">
+      <img src="assets/works/work-5.jpg">
+      <img src="assets/works/work-6.jpg">
+
+    </div>
+  </div>
 
 </div>
+
+<!-- PRICE -->
+<div class="glass">
+  <div class="title">ПРАЙС</div>
+  <div class="row"><span>Мини тату</span><span>3000₽</span></div>
+  <div class="row"><span>Сеанс</span><span>6000₽</span></div>
+</div>
+
+<!-- CONTACT -->
+<div class="glass">
+  <div class="title">ЗАПИСЬ</div>
+  <a href="https://t.me/yourname" class="btn">Telegram</a>
+  <a href="https://instagram.com/yourname" class="btn">Instagram</a>
+</div>
+
+</div>
+
+<script>
+const images = document.querySelectorAll('#carousel img');
+const count = images.length;
+const angle = 360 / count;
+
+images.forEach((img, i) => {
+  img.style.transform = `rotateY(${i * angle}deg) translateZ(300px)`;
+});
+</script>
 
 </body>
 </html>
