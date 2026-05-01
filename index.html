@@ -8,13 +8,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   font-family:'Montserrat',sans-serif;
-  background:#050505;
   color:#fff;
   overflow-x:hidden;
+
+  /* 🔥 ТВОЙ ФОН */
+  background:
+    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
+    url('assets/bg/bg.png');
+
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
+
+/* NOISE (дорогой эффект) */
+body::after{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url('assets/bg/noise.png');
+  opacity:0.04;
+  pointer-events:none;
 }
 
 /* CONTAINER */
@@ -26,61 +49,67 @@ body{
 
 /* HERO */
 .hero{
-  padding:80px 10px;
-}
-.hero h1{
-  font-size:48px;
-  font-weight:800;
+  padding:100px 10px 60px;
 }
 
-/* GLASS */
+.hero h1{
+  font-size:52px;
+  font-weight:800;
+  line-height:0.9;
+  letter-spacing:2px;
+}
+
+/* GLASS BLOCK */
 .glass{
-  background:rgba(255,255,255,0.05);
+  background:rgba(255,255,255,0.04);
   backdrop-filter:blur(20px);
-  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:22px;
   padding:20px;
   margin-top:20px;
 }
 
 /* TITLE */
 .title{
-  font-size:20px;
-  margin-bottom:20px;
+  font-size:18px;
+  margin-bottom:15px;
+  opacity:0.8;
 }
 
 /* CAROUSEL */
 .carousel{
   width:100%;
-  height:280px;
-  perspective:1000px;
+  height:300px;
+  perspective:1200px;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
 .carousel-track{
-  width:200px;
-  height:200px;
+  width:220px;
+  height:220px;
   position:relative;
   transform-style:preserve-3d;
-  animation:rotate 25s linear infinite;
+  animation:rotate 30s linear infinite;
 }
 
 .carousel-track img{
   position:absolute;
-  width:160px;
-  height:200px;
+  width:180px;
+  height:220px;
   object-fit:cover;
-  border-radius:14px;
+  border-radius:16px;
   left:20px;
   top:0;
+
+  filter:grayscale(100%) brightness(0.9);
   transition:0.4s;
-  filter:grayscale(100%);
 }
 
 .carousel-track img:hover{
-  filter:grayscale(0%);
-  transform:scale(1.05);
+  filter:grayscale(0%) brightness(1);
+  transform:scale(1.08);
 }
 
 @keyframes rotate{
@@ -92,22 +121,39 @@ body{
 .row{
   display:flex;
   justify-content:space-between;
-  margin:10px 0;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 /* BUTTON */
 .btn{
   display:block;
-  margin-top:15px;
+  margin-top:12px;
   padding:14px;
   text-align:center;
   border-radius:14px;
-  background:#fff;
-  color:#000;
+
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+
+  color:#fff;
   text-decoration:none;
   font-weight:600;
+
+  transition:0.3s;
 }
 
+.btn:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* MOBILE FIX */
+@media(max-width:420px){
+  .hero h1{
+    font-size:44px;
+  }
+}
 </style>
 </head>
 
@@ -122,7 +168,7 @@ body{
 
 <!-- CAROUSEL -->
 <div class="glass">
-  <div class="title"></div>
+  <div class="title">МОИ РАБОТЫ</div>
 
   <div class="carousel">
     <div class="carousel-track" id="carousel">
@@ -142,15 +188,19 @@ body{
 <!-- PRICE -->
 <div class="glass">
   <div class="title">ПРАЙС</div>
-  <div class="row"><span>Маленькі тату</span><span>50-100$</span></div>
-  <div class="row"><span>Сеанс</span><span>100-200$</span></div>
+
+  <div class="row"><span>Мини тату</span><span>3000₽</span></div>
+  <div class="row"><span>Сеанс</span><span>6000₽</span></div>
+
 </div>
 
 <!-- CONTACT -->
 <div class="glass">
-  <div class="title">Запис або консультація за посиданням</div>
-  <a href="https://t.me/vanotattoo" class="btn">Telegram</a>
-  <a href="https://instagram.com/vano.tattoo" class="btn">Instagram</a>
+  <div class="title">ЗАПИСЬ</div>
+
+  <a href="https://t.me/yourname" class="btn">Telegram</a>
+  <a href="https://instagram.com/yourname" class="btn">Instagram</a>
+
 </div>
 
 </div>
@@ -161,7 +211,7 @@ const count = images.length;
 const angle = 360 / count;
 
 images.forEach((img, i) => {
-  img.style.transform = `rotateY(${i * angle}deg) translateZ(300px)`;
+  img.style.transform = `rotateY(${i * angle}deg) translateZ(320px)`;
 });
 </script>
 
